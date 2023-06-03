@@ -1,0 +1,212 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* extended text */
+.recipename{
+  padding:3rem;
+  word-wrap: break-word;
+  font-size:2rem;
+}
+
+.main-text{
+  padding-top:2rem;
+  padding-bottom:2rem;
+}
+
+/* Colors for brand */
+
+.register{
+    margin-top: 2rem;
+}
+
+.logo{
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+}
+
+/* index */
+
+.indexform{
+  margin-bottom: 5rem;
+  margin-top:2rem;
+}
+
+.index-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top:3rem;
+    margin-bottom:3rem;
+}
+
+
+.indexrecipes-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+hr{
+    color:black;
+    width:80%;
+    margin: 0 auto;
+}
+
+.deleterecipe{
+  background-color:#E78587;
+  font-size:0.8rem;
+  margin-bottom:1rem;
+  margin-top:auto;
+}
+
+.deleterecipe:hover{
+  transform: scale(0.9);
+  transition: transform 0.2s ease-in-out;
+}
+
+.indexrecipe-block {
+    width: 30%;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    background-color:#F8F8F8;
+    color: white;
+    text-align: center;
+    display: grid;
+}
+
+
+.indexrecipe-name{
+    text-align: center;
+    color: grey;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.indexrecipe-instruction h4{
+    font-size:1rem;
+    margin-top: 10px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+/* DISCOVER PAGE ONLY */
+.discover-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top:3rem;
+}
+
+.recipes-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.recipe-block img {
+    min-width: 100%;
+    height: 60%;
+}
+
+.recipe-block {
+    width: 30%;
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: grey;
+    color: white;
+    text-align: center;
+
+}
+
+.recipe-name {
+    font-weight: bold;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+
+}
+
+.recipe-block:hover .recipe-name {
+    transform: scale(0.9);
+    transition: transform 0.2s ease-in-out;
+}
+
+/*socials*/
+.inline{
+    display:inline;
+}
+
+.socialrow h4{
+    color:#A4A4A4;
+}
+.like{
+    border-color:#E78587;
+    font-size:0.8rem;
+    margin-bottom:1rem;
+    margin-top:auto;
+}
+
+.unlike{
+    background-color:#E78587;
+    font-size:0.8rem;
+    margin-bottom:1rem;
+    margin-top:auto;
+}
+
+
+.like:hover{
+    transform: scale(0.9);
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.unlike:hover{
+    transform: scale(0.9);
+    transition: transform 0.2s ease-in-out;
+}
+
+.likebutton{
+    margin:1rem;
+}
+

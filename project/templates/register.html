@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+
+{% endblock %}
+
+{% block main %}
+
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text" value="{{ username or '' }}">
+            {% if username_error %}
+                <p class="error">{{ username_error }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" value="{{ password or ''}}">
+            {% if password_error %}
+                <p class="error">{{ password_error }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password" value="{{ confirmation or ''}}">
+            {% if confirm_error %}
+                <p class="error">{{ confirm_error }}</p>
+            {% endif %}
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+
+{% endblock %}

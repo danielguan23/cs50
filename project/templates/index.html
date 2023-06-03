@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Recipes
+{% endblock %}
+
+
+{% block main %}
+
+    <div class="indexform">
+    <h3>Add your own Recipe!</h3>
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="recipename" placeholder="Recipe Name" type="text">
+        </div>
+        <textarea class="form-group" class="form-control" autocomplete="off" placeholder="Instruction" autofocus name="recipe" type="text"></textarea>
+
+        <br>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <button class="btn btn-primary" type="submit">Add Recipe</button>
+    </form>
+    </div>
+
+    <hr>
+    <div>
+        <div class="container index-container">
+        <h2>Your Recipes:</h2>
+        {% if userrec %}
+        <div class="indexrecipes-container">
+            {% for rows in userrec %}
+            <div class="indexrecipe-block">
+            <a href="{{ url_for('expanded_text', recipename=rows['recipename'], recipe=rows['recipe']) }}" target="_blank">
+                <div class="indexrecipe-name">
+                    <h3>{{ rows['recipename'][:15] }}{% if rows['recipename']|length > 15 %}...{% endif %}</h3>
+                </div>
+                <hr>
+                <div class="indexrecipe-instruction">
+                    <h4>{{ rows['recipe'][:100] }}{% if rows['recipe']|length > 100 %}...{% endif %}</h4>
+                </div>
+
+                <form action="/delete" method="POST">
+                    <input type="hidden" name="recipeid" value="{{ rows['recipeid'] }}">
+                    <button class="btn btn-tertiary deleterecipe" id="deleterecipe" type="submit">Delete</button>
+                </form>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div>
+            <h3></h3>
+        </div>
+        {% endif %}
+        </div>
+    </div>
+    <hr>
+
+    <div class="container discover-container">
+        {% if savedrec %}
+        <h2>Online Recipes:</h2>
+        <div class="recipes-container">
+            {% for recipe in savedrec %}
+            <a href="{{ recipe['link'] }}" target="_blank" class="recipe-block">
+            <img src="{{ recipe['image'] }}" alt="{{ recipe['name'] }}">
+            <div class="recipe-name">
+                <h3>{{ recipe['name'] }}</h3>
+                <div class="push">
+                    <form action="/saveindex" method="POST">
+                    <input type="hidden" name="recipe_name" value="{{ recipe['name'] }}">
+                    <input type="hidden" name="recipe_image" value="{{ recipe['image'] }}">
+                    <input type="hidden" name="recipe_source" value="{{ recipe['link'] }}">
+                    {% if recipe['link'] in saved_links %}
+                        <input type="submit" value="Unsave">
+                    {% else %}
+                        <input type="submit" value="Save">
+                    {% endif %}
+                    </form>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        </div>
+{% endblock %}

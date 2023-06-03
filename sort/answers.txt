@@ -1,0 +1,23 @@
+sort1 uses: Bubble sort
+
+How do you know?: Time to sort varies largely. Time to sort sorted list is low but is high for random and reversed list.
+
+sort2 uses: Merge sort
+
+How do you know?: Consistent low timings.
+
+sort3 uses: Selection Sort
+
+How do you know?: Consistent high timings.
+
+// sort 1 sorted 0.341
+// sort 2 sorted 0.344
+// sort 3 sorted 2.947
+
+// sort 1 rev 5.418
+// sort 2 rev 0.321
+// sort 3 rev 3.071
+
+// sort 1 ran 7.426
+// sort 2 ran 0.339
+// sort 3 ran 3.074

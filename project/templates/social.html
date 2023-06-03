@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Social
+{% endblock %}
+
+{% block main %}
+    <div>
+        <div class="container index-container">
+        <h2>Community Favourites</h2>
+        {% if userrec %}
+        <div class="indexrecipes-container">
+            {% for rows in userrec %}
+            <div class="indexrecipe-block">
+            <a href="{{ url_for('expanded_text', recipename=rows['recipename'], recipe=rows['recipe']) }}" target="_blank">
+                <div class="indexrecipe-name">
+                    <h3>{{ rows['recipename'][:15] }}{% if rows['recipename']|length > 15 %}...{% endif %}</h3>
+                </div>
+                <hr>
+                <div class="indexrecipe-instruction">
+                    <h4>{{ rows['recipe'][:100] }}{% if rows['recipe']|length > 100 %}...{% endif %}</h4>
+                </div>
+                <div class="socialrow">
+                    <h4 class="inline">{{ rows['likes'] }} Likes    </h4>
+                <form action="/social" method="POST" class="inline likebutton">
+                    <input type="hidden" name="recipeid" value="{{ rows['recipeid'] }}">
+                    {% if rows['recipeid'] in userlikelist %}
+                    <button class="btn btn-tertiary unlike" type="submit">Unlike</button>
+                    {% else %}
+                    <button class="btn btn-tertiary like" type="submit">Like</button>
+                    {% endif %}
+                </form>
+
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        </div>
+    </div>
+
+    <div>
+        <div class="container index-container">
+        <h2>Fresh From The Oven!</h2>
+        {% if newrec %}
+        <div class="indexrecipes-container">
+            {% for rows in newrec %}
+            <div class="indexrecipe-block">
+            <a href="{{ url_for('expanded_text', recipename=rows['recipename'], recipe=rows['recipe']) }}" target="_blank">
+                <div class="indexrecipe-name">
+                    <h3>{{ rows['recipename'][:15] }}{% if rows['recipename']|length > 15 %}...{% endif %}</h3>
+                </div>
+                <hr>
+                <div class="indexrecipe-instruction">
+                    <h4>{{ rows['recipe'][:100] }}{% if rows['recipe']|length > 100 %}...{% endif %}</h4>
+                </div>
+                <div class="socialrow">
+                    <h4 class="inline">{{ rows['likes'] }} Likes    </h4>
+                <form action="/social" method="POST" class="inline likebutton">
+                    <input type="hidden" name="recipeid" value="{{ rows['recipeid'] }}">
+                    {% if rows['recipeid'] in userlikelist %}
+                    <button class="btn btn-tertiary unlike" type="submit">Unlike</button>
+                    {% else %}
+                    <button class="btn btn-tertiary like" type="submit">Like</button>
+                    {% endif %}
+                </form>
+
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

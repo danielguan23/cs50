@@ -1,0 +1,10 @@
++-------------------+-------------+--------------+
+| AVG(danceability) | AVG(energy) | AVG(valence) |
++-------------------+-------------+--------------+
+| 0.71646           | 0.65906     | 0.484443     |
++-------------------+-------------+--------------+
+
+There is lack of comparison with other music or listener's data. However, from the average info, there is low valence but high energy/danceability, thus the person may be hyped yet emotional, seemingly Orange.
+
+This however assumes that songs are generally normally distributed between 0 and 1 for danceability, energy and valence. For better results, it would be better if the average from a much larger sample of maybe top 10000 songs can be found and the difference/delta change from the population mean is found.
+After, compare the difference in deltas between listeners and assume a normal distribution of all auras such that there will be criterias for each aura and that each person's set of data can be used to compare against the criterias and generate their aura.

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="recipename" placeholder="Recipe" type="text">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="recipe" placeholder="Instruction" type="text">
+        </div>
+        <br>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <button class="btn btn-primary" type="submit">Add to Home</button>
+    </form>
+
+{% endblock %}

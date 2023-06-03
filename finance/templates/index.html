@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <header class="alert alert-primary border text-center" role="alert">
+        {{ message }}
+    </header>
+{% endif %}
+{% endwith %}
+
+{% block main %}
+
+    <table class="table table-striped">
+        <thead>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.symbol }}</td>
+                    <td>{{ stock.name }}</td>
+                    <td>{{ stock.shares }}</td>
+                    <td>{{ stock.price|usd }}</td>
+                    <td>{{ stock.total|usd }}</td>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                <form class="form-inline" action="/buy" method="post">
+                                    <div class="form-group">
+                                        <input value="{{ stock.symbol }}" hidden autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Buy shares" type="text">
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">Buy</button>
+                                </form>
+                                </div>
+
+                                <div class="col-md-6">
+                                <form class="form-inline" action="/sell" method="post">
+                                    <div class="form-group">
+                                        <input value="{{ stock.symbol }}" hidden autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Sell shares" type="text">
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">Sell</button>
+                                </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5">CASH</td>
+                <td>{{ user_cash|usd }}</td>
+            </tr>
+            <tfoot>
+                <td colspan="5"></td>
+                <td>{{ total_cash|usd }}</td>
+            </tfoot>
+        </tbody>
+    </table>
+{% endblock %}
